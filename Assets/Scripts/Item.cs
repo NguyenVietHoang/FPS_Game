@@ -28,7 +28,7 @@ public class Item : MonoBehaviour
 
             if(remainingTime <= 0 && !destroyed)
             {
-                Debug.Log("Time to Destroy " + data.Name);
+                //Debug.Log("Time to Destroy " + data.Name);
                 destroyed = true;
                 OnDestroyTime?.Invoke(itemId);                
             }
@@ -37,7 +37,7 @@ public class Item : MonoBehaviour
 
     public void OnDestroy()
     {
-        Debug.Log("Item " + data.Name + " was destroyed.");
+        //Debug.Log("Item " + data.Name + " was destroyed.");
     }
 
     public void SetData(int _itemId, ItemData _data)
