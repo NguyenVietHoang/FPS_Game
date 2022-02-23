@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0396e0301c32e49a623d713c5cc0be, type: 3}
   m_Name: Item 1
   m_EditorClassIdentifier: 
-  Model: {fileID: 152196, guid: d611695a54a8b3b4696b3be4f4be0e06, type: 3}
+  Model: {fileID: 1253804597436667981, guid: 40d6a75b4034d954db50c903739f9cf2, type: 3}
   Name: Air Horn
   Description: Air Horn Description Here...
   TTL: 2.5

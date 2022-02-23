@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0396e0301c32e49a623d713c5cc0be, type: 3}
   m_Name: Item 3
   m_EditorClassIdentifier: 
-  Model: {fileID: 145182, guid: 794bb94b1bde20543a16802bf8106457, type: 3}
+  Model: {fileID: 4432734682843847114, guid: e046b438b3302a64f8a09d6c76493f47, type: 3}
   Name: Fish
   Description: Fish Description Here...
   TTL: 5

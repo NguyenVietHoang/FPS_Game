@@ -33,13 +33,26 @@ public class ItemManager : MonoBehaviour
         }        
     }
 
+    /// <summary>
+    /// Spawn an Item on the field
+    /// </summary>
+    /// <param name="spawnPos">Position where we sapwn the obj</param>
+    /// <param name="itemId">The position Id</param>
     public void SpawnRandomItem(Transform spawnPos, int itemId)
     {
         ItemData randomItem = prefabList[Random.Range(0, prefabList.Count)];
         GameObject tmpObj = Instantiate(randomItem.Model, spawnPos, false);
 
+        //Get the view from the prefab
+        ItemView tmpObjView = tmpObj.GetComponent<ItemView>();
+        if(tmpObjView != null)
+        {
+            tmpObjView.SetViewData(randomItem);
+        }
+
+        //Add the Item Script to the obj
         Item tmpItem = tmpObj.AddComponent<Item>();
-        tmpItem.SetData(itemId, randomItem);
+        tmpItem.SetData(itemId, randomItem, tmpObjView);
         tmpItem.OnDestroyTime += DestroyItem;
 
         //Add this new Object to manager's list

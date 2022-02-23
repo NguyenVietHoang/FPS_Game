@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0396e0301c32e49a623d713c5cc0be, type: 3}
   m_Name: Item 2
   m_EditorClassIdentifier: 
-  Model: {fileID: 125468, guid: 9899f34c95d2c074e84f6322fd2ada5b, type: 3}
+  Model: {fileID: 1624640369287408489, guid: e062f4fa17f4f4f4bb552b773bad0788, type: 3}
   Name: Ammo Missles
   Description: Ammo Missles Description Here...
   TTL: 4

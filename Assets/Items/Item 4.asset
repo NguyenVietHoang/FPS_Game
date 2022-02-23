@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0396e0301c32e49a623d713c5cc0be, type: 3}
   m_Name: Item 4
   m_EditorClassIdentifier: 
-  Model: {fileID: 164828, guid: 1b3e1f8ff07d51345b04f7263cb25482, type: 3}
-  Name: Flood Light
-  Description: Flood Light Description Here...
+  Model: {fileID: 7304440053819373774, guid: a1fc9818230e54a40a1fbac05ab17638, type: 3}
+  Name: Medic Bag
+  Description: Medic Bag Description Here...
   TTL: 3.5
   Score: 40

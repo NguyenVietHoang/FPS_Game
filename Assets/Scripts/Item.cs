@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
     public delegate void OnEventCalled<T>(T data);
     public OnEventCalled<int> OnDestroyTime;
 
+    public ItemView view;
     public ItemData data;
     public int itemId;
 
@@ -25,6 +26,11 @@ public class Item : MonoBehaviour
         if(data != null)
         {
             remainingTime = remainingTime > 0 ? remainingTime - Time.deltaTime : 0;
+            
+            if(view != null && !destroyed)
+            {
+                view.UpdateTTLView(remainingTime);
+            }
 
             if(remainingTime <= 0 && !destroyed)
             {
@@ -40,7 +46,7 @@ public class Item : MonoBehaviour
         //Debug.Log("Item " + data.Name + " was destroyed.");
     }
 
-    public void SetData(int _itemId, ItemData _data)
+    public void SetData(int _itemId, ItemData _data, ItemView _view)
     {
         if(_data != null)
         {
@@ -52,6 +58,11 @@ public class Item : MonoBehaviour
         else
         {
             Debug.LogError("Error on Item Set Data: Data is null.");
+        }
+
+        if(_view != null)
+        {
+            view = _view;
         }
     }
 }
