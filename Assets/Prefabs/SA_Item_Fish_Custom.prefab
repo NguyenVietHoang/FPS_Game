@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7913540885710423780}
   - component: {fileID: 5750529668647596627}
   - component: {fileID: 7197495508858778998}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_Score_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8739089558672403583}
   - component: {fileID: 2418888254179620403}
   - component: {fileID: 7450470463071807086}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_Name_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 2681762308584078017}
   - component: {fileID: 1649509446192387829}
   - component: {fileID: 583444023867692431}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 7274539502253409871}
   - component: {fileID: 4268736640799768053}
   - component: {fileID: 7816857856433034224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_Score_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 7073980308097641339}
   - component: {fileID: 5362527677480156155}
   - component: {fileID: 9145727929723016397}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_Name_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,10 +621,11 @@ GameObject:
   m_Component:
   - component: {fileID: 68361376092414201}
   - component: {fileID: 3325226162748614612}
+  - component: {fileID: 5485514852503642524}
   - component: {fileID: 2665453341300509981}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SA_Item_Fish_Custom
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,6 +663,25 @@ MonoBehaviour:
   DescTxt: {fileID: 5642048589221507760}
   ScoreTxt: {fileID: 7197495508858778998}
   TTLText: {fileID: 1133961714016347350}
+--- !u!114 &5485514852503642524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432734682843847114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8571ec87067a9eb439848949195c1d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 3325226162748614612}
+  data: {fileID: 11400000, guid: 9c12db050d2277b4e8d974322a8dfb10, type: 2}
+  renderers:
+  - {fileID: 3951623216459259087}
+  colliders:
+  - {fileID: 2665453341300509981}
+  itemId: 0
 --- !u!65 &2665453341300509981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -687,7 +707,7 @@ GameObject:
   - component: {fileID: 158450933540507876}
   - component: {fileID: 6764784121021383943}
   - component: {fileID: 503041502380842079}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +813,7 @@ GameObject:
   - component: {fileID: 6437211564172001437}
   - component: {fileID: 1197881609813139478}
   - component: {fileID: 5642048589221507760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_Desc_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +948,7 @@ GameObject:
   - component: {fileID: 7435273141320668384}
   - component: {fileID: 2581822650256821890}
   - component: {fileID: 7566855427177896959}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_Desc_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,7 +1082,7 @@ GameObject:
   - component: {fileID: 4466491560888243310}
   - component: {fileID: 6676968623754406720}
   - component: {fileID: 1133961714016347350}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Item_TTL_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,6 +1216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SA_Item_Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 145182, guid: 794bb94b1bde20543a16802bf8106457, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 401854, guid: 794bb94b1bde20543a16802bf8106457, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1245,11 +1269,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64337317556007980, guid: 794bb94b1bde20543a16802bf8106457, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 794bb94b1bde20543a16802bf8106457, type: 3}
 --- !u!4 &3951623216456800649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 401854, guid: 794bb94b1bde20543a16802bf8106457,
+    type: 3}
+  m_PrefabInstance: {fileID: 3951623216457201719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3951623216459259087 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2335992, guid: 794bb94b1bde20543a16802bf8106457,
     type: 3}
   m_PrefabInstance: {fileID: 3951623216457201719}
   m_PrefabAsset: {fileID: 0}

@@ -9,12 +9,12 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     private List<Transform> spawnPosList;
 
-    private Dictionary<int, GameObject> itemInstantiated;
+    private Dictionary<int, Item> itemInstantiated;
 
     // Start is called before the first frame update
     void Start()
     {
-        itemInstantiated = new Dictionary<int, GameObject>();
+        itemInstantiated = new Dictionary<int, Item>();
     }
 
     // Update is called once per frame
@@ -43,29 +43,29 @@ public class ItemManager : MonoBehaviour
         ItemData randomItem = prefabList[Random.Range(0, prefabList.Count)];
         GameObject tmpObj = Instantiate(randomItem.Model, spawnPos, false);
 
-        //Get the view from the prefab
-        ItemView tmpObjView = tmpObj.GetComponent<ItemView>();
-        if(tmpObjView != null)
-        {
-            tmpObjView.SetViewData(randomItem);
-        }
-
         //Add the Item Script to the obj
-        Item tmpItem = tmpObj.AddComponent<Item>();
-        tmpItem.SetData(itemId, randomItem, tmpObjView);
+        Item tmpItem = tmpObj.GetComponent<Item>();
+        tmpItem.SetData(itemId);
         tmpItem.OnDestroyTime += DestroyItem;
 
         //Add this new Object to manager's list
-        itemInstantiated.Add(itemId, tmpObj);
+        itemInstantiated.Add(itemId, tmpItem);
     }
 
     public void DestroyItem(int itemKey)
     {
-        if(itemInstantiated.ContainsKey(itemKey))
+        StartCoroutine(OnDelayDestroy(itemKey));
+    }
+
+    float delayTime = 2.0f;
+    IEnumerator OnDelayDestroy(int itemKey)
+    {
+        if (itemInstantiated.ContainsKey(itemKey))
         {
+            yield return new WaitForSeconds(delayTime);
+
             Destroy(itemInstantiated[itemKey].gameObject);
             itemInstantiated.Remove(itemKey);
         }
     }
-
 }

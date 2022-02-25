@@ -7,8 +7,14 @@ public class Item : MonoBehaviour
     public delegate void OnEventCalled<T>(T data);
     public OnEventCalled<int> OnDestroyTime;
 
-    public ItemView view;
+    [SerializeField]
+    private ItemView view;
     public ItemData data;
+
+    public List<MeshRenderer> renderers;
+    public List<Collider> colliders;
+
+    [HideInInspector]
     public int itemId;
 
     float remainingTime;
@@ -17,26 +23,25 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        view.SetViewData(data);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(data != null)
+        if(data != null && !destroyed)
         {
             remainingTime = remainingTime > 0 ? remainingTime - Time.deltaTime : 0;
             
-            if(view != null && !destroyed)
+            if(view != null )
             {
                 view.UpdateTTLView(remainingTime);
             }
 
-            if(remainingTime <= 0 && !destroyed)
+            if(remainingTime <= 0)
             {
                 //Debug.Log("Time to Destroy " + data.Name);
-                destroyed = true;
-                OnDestroyTime?.Invoke(itemId);                
+                OnDestroyEvent();
             }
         }
     }
@@ -46,23 +51,34 @@ public class Item : MonoBehaviour
         //Debug.Log("Item " + data.Name + " was destroyed.");
     }
 
-    public void SetData(int _itemId, ItemData _data, ItemView _view)
+    public void SetData(int _itemId)
+    { 
+        itemId = _itemId;
+        remainingTime = data.TTL;
+        destroyed = false;       
+    }
+
+    private void DeactiveObj()
     {
-        if(_data != null)
+        destroyed = true;
+
+        foreach (var mesh in renderers)
         {
-            data = _data;
-            itemId = _itemId;
-            remainingTime = data.TTL;
-            destroyed = false;
-        }
-        else
-        {
-            Debug.LogError("Error on Item Set Data: Data is null.");
+            mesh.enabled = false;
         }
 
-        if(_view != null)
+        foreach (var col in colliders)
         {
-            view = _view;
+            col.enabled = false;
         }
+    }
+
+    /// <summary>
+    /// Call this event to set this Item in Destroyed mode
+    /// </summary>
+    public void OnDestroyEvent()
+    {
+        DeactiveObj();
+        OnDestroyTime?.Invoke(itemId);
     }
 }
