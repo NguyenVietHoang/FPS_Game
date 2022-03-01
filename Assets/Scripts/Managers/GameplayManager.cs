@@ -87,4 +87,9 @@ public class GameplayManager : Singleton<GameplayManager>
             yield return null;
         }
     }
+
+    public void OnScoreUpdate(int _score)
+    {
+        ReactManager.React_ScoreUpdate(_score);
+    }
 }

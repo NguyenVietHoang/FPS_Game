@@ -37,4 +37,9 @@ public class ReactManager : MonoBehaviour
     {
         OnLoginSuccess?.Invoke(message);
     }
+
+    public void React_ScoreUpdate(int score)
+    {
+        ScoreUpdate(score);
+    }
 }

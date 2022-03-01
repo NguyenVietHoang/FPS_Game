@@ -93,5 +93,6 @@ public class PlayerManager : MonoBehaviour
     {
         score += _score;
         sceneView.UpdateScore(score);
+        manager.OnScoreUpdate(score);
     }
 }
