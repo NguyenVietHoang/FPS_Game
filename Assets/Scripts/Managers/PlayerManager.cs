@@ -15,16 +15,20 @@ public class PlayerManager : MonoBehaviour
     private Rigidbody rb;
 
     private int score;
+
+    private GameplayManager manager;
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameplayManager.Instance;
+
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         mvtSpd = Vector2.zero;
 
         score = 0;
 
-        sceneView.SetViewData("Nick", score);
+        sceneView.SetViewData("Nick", score, manager.address);      
     }
 
     // Update is called once per frame
