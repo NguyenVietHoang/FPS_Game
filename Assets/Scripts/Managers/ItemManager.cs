@@ -43,7 +43,7 @@ public class ItemManager : MonoBehaviour
         ItemData randomItem = prefabList[Random.Range(0, prefabList.Count)];
         GameObject tmpObj = Instantiate(randomItem.Model, spawnPos, false);
 
-        //Add the Item Script to the obj
+        //Get the Item Script from the obj
         Item tmpItem = tmpObj.GetComponent<Item>();
         tmpItem.SetData(itemId);
         tmpItem.OnDestroyTime += DestroyItem;

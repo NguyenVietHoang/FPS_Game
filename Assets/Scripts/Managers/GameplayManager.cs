@@ -10,13 +10,15 @@ public class GameplayManager : Singleton<GameplayManager>
     [SerializeField]
     private ReactManager ReactManager;
 
-    public string address { get; private set; }
+    public string Address { get; private set; }
+    public string Name { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
-        address = "Test Address...";
+        Address = "Test Address...";
+        Name = "Nick...";
 
-        if(MenuView != null)
+        if (MenuView != null)
         {
             MenuView.Init();
 
@@ -48,7 +50,7 @@ public class GameplayManager : Singleton<GameplayManager>
     /// <param name="msg"></param>
     void OnLoginSuccess(string msg)
     {
-        address = msg;
+        Address = msg;
         ChangeScene();
     }
 

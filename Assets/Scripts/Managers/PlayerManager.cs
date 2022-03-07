@@ -6,9 +6,20 @@ public class PlayerManager : MonoBehaviour
 {
     [Range (0f, 5f)]
     public float speed;
+    [Range(0f, 10f)]
+    public float rotSpeed = 2f;
+
+    [SerializeField]
+    private GameObject playerMesh;
 
     [SerializeField]
     private SceneView sceneView;
+
+    [SerializeField]
+    private CameraControl cameraControl;
+
+    [SerializeField]
+    private PlayerAudioManager audioManager;
 
     private Animator anim;
     private Vector2 mvtSpd;
@@ -17,6 +28,7 @@ public class PlayerManager : MonoBehaviour
     private int score;
 
     private GameplayManager manager;
+    CAMERA_MODE currentMode;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +40,16 @@ public class PlayerManager : MonoBehaviour
 
         score = 0;
 
-        sceneView.SetViewData("Nick", score, manager.address);      
+        sceneView.SetViewData(manager.Name, score, manager.Address);
+
+        currentMode = CAMERA_MODE.SIDE;
+        SwitchCamera();
+
+        audioManager.Audio_Run(false);
+        audioMode = 0;
     }
 
+    int audioMode = 0;
     // Update is called once per frame
     void Update()
     {
@@ -38,20 +57,41 @@ public class PlayerManager : MonoBehaviour
         float vertical = FixInput(Input.GetAxis("Vertical"), 0.25f);
         mvtSpd = new Vector2(horizontal, vertical);
 
-        //Translate the player
+        //Transform the player
         if (mvtSpd != Vector2.zero)
         {
-            Vector3 newPos = transform.position;
-            newPos.x += mvtSpd.x * speed * Time.deltaTime;
-            newPos.z += mvtSpd.y * speed * Time.deltaTime;
+            transform.Rotate(0, rotSpeed * horizontal * Time.deltaTime, 0);
 
-            transform.LookAt(newPos, Vector3.up);
-            transform.position = newPos;
-        }       
+            transform.position += transform.forward * speed * Time.deltaTime * vertical;
+
+            if (audioMode == 0 && vertical != 0)
+            {
+                    audioManager.Audio_Run(true);
+                    audioMode = 1;
+            }
+            if(audioMode != 0 && vertical == 0)
+            {
+                audioManager.Audio_Run(false);
+                audioMode = 0;                    
+            }            
+        }        
+        else
+        {
+            if (audioMode != 0)
+            {
+                audioManager.Audio_Run(false);
+                audioMode = 0;
+            }
+        }
 
         //Trigger the animation
-        anim.SetFloat("Speed_f", Mathf.Max(Mathf.Abs(horizontal), Mathf.Abs(vertical)));
-     
+        anim.SetFloat("Speed_f", Mathf.Abs(vertical));
+
+        //Control Camera
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchCamera();
+        }
     }
 
     float FixInput(float input, float min_threshold)
@@ -79,8 +119,7 @@ public class PlayerManager : MonoBehaviour
             if(colItem != null)
             {
                 Debug.Log("Collide with item: " + other.name);
-                GetScore(colItem.data.Score);
-                colItem.OnDestroyEvent();
+                OnTriggerItem(colItem);
             }
             else
             {
@@ -93,6 +132,33 @@ public class PlayerManager : MonoBehaviour
     {
         score += _score;
         sceneView.UpdateScore(score);
+#if !UNITY_EDITOR
         manager.OnScoreUpdate(score);
+#endif
+    }
+
+    /// <summary>
+    /// Switch Camera mode to Top down or Side View
+    /// </summary>
+    void SwitchCamera()
+    {
+        currentMode = (currentMode == CAMERA_MODE.SIDE) ? CAMERA_MODE.TOP_DOWN : CAMERA_MODE.SIDE;
+        if (cameraControl != null)
+        {
+            cameraControl.SwitchCameraMode(currentMode);
+        }
+    }
+
+    void OnTriggerItem(Item colItem)
+    {
+        //Trigger Add Score
+        GetScore(colItem.data.Score);
+
+        //Trigger Item Destroy Event
+        colItem.OnDestroyEvent();
+
+        //Trigger Audio
+        audioManager.Audio_Collect();
+        audioMode = 2;
     }
 }

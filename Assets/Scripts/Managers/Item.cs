@@ -17,6 +17,9 @@ public class Item : MonoBehaviour
     [HideInInspector]
     public int itemId;
 
+    [SerializeField]
+    private ParticleSystem particle;
+
     float remainingTime;
     bool destroyed;
 
@@ -24,6 +27,7 @@ public class Item : MonoBehaviour
     void Start()
     {
         view.SetViewData(data);
+        particle.Play();
     }
 
     // Update is called once per frame
@@ -79,6 +83,7 @@ public class Item : MonoBehaviour
     public void OnDestroyEvent()
     {
         DeactiveObj();
+        particle.Stop();
         OnDestroyTime?.Invoke(itemId);
     }
 }

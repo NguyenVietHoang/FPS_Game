@@ -52,7 +52,7 @@ public class ItemView : MonoBehaviour
         if (Camera.current != null)
         {
             Canvas.worldCamera = Camera.current;
-            Vector3 dir = transform.position -Camera.current.transform.position;
+            Vector3 dir = transform.position - Camera.current.transform.position;
             transform.forward = dir;
         }
     }
