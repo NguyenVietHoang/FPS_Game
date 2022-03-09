@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765318089469987510}
   - component: {fileID: 1579830854936234246}
-  - component: {fileID: 530710145806877507}
+  - component: {fileID: 2121701370693211019}
   m_Layer: 15
   m_Name: AudioManager
   m_TagString: Untagged
@@ -161,7 +161,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &530710145806877507
+--- !u!114 &2121701370693211019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,19 +170,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2301792430280389056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9745017b376199c4aaf3fc7a48847533, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a162a08feff0c141ba88bc08297a985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: 43be9c7687996bc45b6ac468f2432cd0, type: 2}
-  CollectAudios:
-  - {fileID: 8300000, guid: 39a52c8570aa5ee4b8c76570a3eda151, type: 3}
-  - {fileID: 8300000, guid: a422bb42207b84543bfa921cf5ad09d2, type: 3}
-  - {fileID: 8300000, guid: 031057f31153d6e4da071a851d29e9e2, type: 3}
-  - {fileID: 8300000, guid: 13f0d2cf3fe7b1744ada35cb7c1e1a4b, type: 3}
-  - {fileID: 8300000, guid: 3f8b82312021c504f8a6212dddba71f3, type: 3}
+  AudioModel: {fileID: 11400000, guid: 3b1695377d3124d478b1fd8570cd0f94, type: 2}
+  TimeToReach: 0.2
+  BackgroundSource: {fileID: 1579830854936234246}
   CollectSource: {fileID: 5715901241597089344}
   WalkSource: {fileID: 6846877125152397433}
-  BackgroundSource: {fileID: 1579830854936234246}
 --- !u!1 &2945014984752312538
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +442,7 @@ MonoBehaviour:
   playerMesh: {fileID: 0}
   sceneView: {fileID: 0}
   cameraControl: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!54 &6663169712721323344
 Rigidbody:
   m_ObjectHideFlags: 0

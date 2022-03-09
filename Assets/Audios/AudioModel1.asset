@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9745017b376199c4aaf3fc7a48847533, type: 3}
+  m_Name: AudioModel1
+  m_EditorClassIdentifier: 
+  Mixer: {fileID: 24100000, guid: 43be9c7687996bc45b6ac468f2432cd0, type: 2}
+  OnIdle: {fileID: -5851658323473492265, guid: 43be9c7687996bc45b6ac468f2432cd0, type: 2}
+  OnWalk: {fileID: -9155415224270044717, guid: 43be9c7687996bc45b6ac468f2432cd0, type: 2}
+  OnCollect: {fileID: 5270986916925235013, guid: 43be9c7687996bc45b6ac468f2432cd0,
+    type: 2}
+  CollectAudios:
+  - {fileID: 8300000, guid: 39a52c8570aa5ee4b8c76570a3eda151, type: 3}
+  - {fileID: 8300000, guid: a422bb42207b84543bfa921cf5ad09d2, type: 3}
+  - {fileID: 8300000, guid: 031057f31153d6e4da071a851d29e9e2, type: 3}
+  - {fileID: 8300000, guid: 13f0d2cf3fe7b1744ada35cb7c1e1a4b, type: 3}
+  - {fileID: 8300000, guid: 3f8b82312021c504f8a6212dddba71f3, type: 3}
+  WalkClips:
+  - {fileID: 8300000, guid: 0c58744c3b6fdd844b8348066c3f703e, type: 3}
+  - {fileID: 8300000, guid: 6597a368cd74a924eaedb0171d5b28d3, type: 3}
+  BackgroundClips:
+  - {fileID: 8300000, guid: 4e90edde602a7104aa7d4c064023682c, type: 3}

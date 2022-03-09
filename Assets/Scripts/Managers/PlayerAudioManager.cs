@@ -6,33 +6,40 @@ using UnityEngine.Audio;
 public class PlayerAudioManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioModel audioModel;
+    private AudioModel AudioModel;
     [SerializeField]
-    private float timeToReach = 0.2f;
+    private float TimeToReach = 0.2f;
+    [SerializeField]
+    private AudioSource BackgroundSource;
+    [SerializeField]
+    private AudioSource CollectSource;
+    [SerializeField]
+    private AudioSource WalkSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        BackgroundSource.clip = AudioModel.BackgroundClips[0];
+        WalkSource.clip = AudioModel.WalkClips[0];
     }
 
     public void Audio_Run(bool state)
     {
         if(state)
         {
-            audioModel.OnWalk.TransitionTo(timeToReach);            
-            audioModel.WalkSource.Play();
+            AudioModel.OnWalk.TransitionTo(TimeToReach);            
+            WalkSource.Play();
         }
         else
         {
-            audioModel.OnIdle.TransitionTo(timeToReach);
-            audioModel.WalkSource.Stop();
+            AudioModel.OnIdle.TransitionTo(TimeToReach);
+            WalkSource.Stop();
         }
     }
 
     public void Audio_Collect()
     {
-        audioModel.OnCollect.TransitionTo(timeToReach);
-        AudioClip collectClip = audioModel.CollectAudios[Random.Range(0, audioModel.CollectAudios.Count)];
-        audioModel.CollectSource.PlayOneShot(collectClip);
+        AudioModel.OnCollect.TransitionTo(TimeToReach);
+        AudioClip collectClip = AudioModel.CollectAudios[Random.Range(0, AudioModel.CollectAudios.Count)];
+        CollectSource.PlayOneShot(collectClip);
     }
 }

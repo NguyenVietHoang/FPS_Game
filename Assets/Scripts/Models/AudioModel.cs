@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioModel : MonoBehaviour
+[CreateAssetMenu(fileName = "New Audio Model", menuName = "Audio Model", order = 52)]
+public class AudioModel : ScriptableObject
 {
     public AudioMixer Mixer;
 
@@ -12,7 +13,6 @@ public class AudioModel : MonoBehaviour
     public AudioMixerSnapshot OnCollect;
 
     public List<AudioClip> CollectAudios;
-    public AudioSource CollectSource;
-    public AudioSource WalkSource;
-    public AudioSource BackgroundSource;
+    public List<AudioClip> WalkClips;
+    public List<AudioClip> BackgroundClips;
 }

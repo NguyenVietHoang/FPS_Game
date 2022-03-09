@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Range (0f, 5f)]
     public float speed;
-    [Range(0f, 10f)]
+    [Range(0f, 20f)]
     public float rotSpeed = 2f;
 
     [SerializeField]
